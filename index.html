@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+   
+
+    <style>
+*
+{
+    margin: 0%;
+    padding: 0%;
+}
+body
+{
+    overflow: hidden;
+}
+#main
+{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-flow: column;
+}
+#navbar
+{
+    width: 90%;
+    height: 10%;
+    border: 1px solid black;
+    margin: 1% auto;
+}
+#opscreen 
+{
+    width: 90%;
+    height: 80%;
+    border: 1px solid black;
+    margin: 1% auto;
+}
+#formTB
+{
+    width: 40%;
+    height: 50%;
+    border: 1px solid black;
+    margin: 8% auto;
+    text-align: center;
+}
+input
+{
+    margin-top: 1%;
+    width: 80%;
+    height: 15%;
+}
+button
+{
+    width: 20%;
+    height: 20%;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div id="main">
+        <div id="navbar">
+            <img src="" alt="">
+            <button>home</button>
+            <button>LOGIN</button>
+            <button onclick="test2()">sign_up</button>
+        </div>
+
+        <div id="opscreen">
+
+            <div id="formTB">
+                <form id="form">
+
+                    <input type="text" name="name" placeholder="username" id="name"> <br>
+                    <input type="text" name="password" placeholder="Password" id="password"> <br>
+
+                </form>
+                <button onclick="test1(event)">submit</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    
+
+var data = [
+
+    {
+        userName: "somu",
+        password: "somu123"
+    },
+    {
+        userName: "admin",
+        password: "admin"
+    }
+
+]
+
+if (localStorage.getItem("mainData") == null)
+{
+    localStorage.setItem("mainData",JSON.stringify(data))
+}
+
+function test1(e)
+{
+    e.preventDefault();
+    var form=document.getElementById("form");
+    var n = form.name.value;
+    var p = form.password.value;
+
+    
+
+    let abc=JSON.parse(localStorage.getItem("mainData"));
+
+
+    console.log(abc)
+
+
+    for (let i = 0; i < abc.length; i++)
+    {
+        
+        if ( (abc[i].userName == n) && ( abc[i].password==p)) 
+        {
+            window.location.href = "\home.html";
+        }
+        
+
+    }
+    
+}
+ 
+function test2()
+{
+    window.location.href="\signup.html"
+}
+</script>
